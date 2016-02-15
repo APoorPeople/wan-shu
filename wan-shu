@@ -1,0 +1,30 @@
+#include<stdio.h>
+int main()
+{
+	static int k[20];//存放因子的数组
+	int i,j,n,s;
+	int p;
+	scanf("%d",&p);
+	for(j=2;j<p;j++)
+	{
+		n=-1;//最后因子所在的下标，没有时为-1
+		s=j;//s用来减的操作，因为j不能改
+	for(i=1;i<=j/2;i++)//从1到该数的二分之一
+	{
+		if((j%i)==0)//如果是j的因子
+		{	
+			n++;//因子下标移一位
+			s=s-i;//让该数减去它的因子,最后看减去所有因子后是否为0
+			k[n]=i;//存入因子
+		}
+	}
+	if(s==0)//是完数，则输出
+	{
+		printf("%d its factors are ",j);
+		for(i=0;i<=n;i++)
+		printf("%d ",k[i]);
+		printf("\n");
+	}
+	}
+	return 0;
+}
